@@ -8,18 +8,24 @@ public class Palyndrom {
 
 	public void startPalyndrom() {
 		System.out.println();
-		System.out.println("Введите слово которое вам непонятно");
+		System.out.println("Vvedite slovo");
 		String str = getWord();
 		System.out.println(isPalindrom(str));
 	}
 
-	public boolean isPalindrom(String str) {
-		for(int i = 0; i < str.length()/2; i++) {
-			if(str.charAt(i) != str.charAt(str.length() - i - 1)) {
-				return false;
-			}
+	public static String reverseString(String s){
+		String reverse = "";
+		for(int i = s.length()-1;i>=0;i--){
+			reverse=reverse+s.charAt(i);
 		}
-		return true;
+		return reverse;
+	}
+
+	public static boolean isPalindrom(String s) {
+			if(reverseString(s).equals(s)) {
+				return true;
+			}
+		return false;
 	}
 
 	public String getWord() {

@@ -2,15 +2,13 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] argv) {
-		Simple simpy = new Laba();
+		Simple simpy = new Simple();
 		Palyndrom paly = new Palyndrom();
 
-		System.out.println("Для поиска простых чисел введите в диапазоне от 1 до вашего числа введите 1;");
-		System.out.println("Для проверки слова на возможность ег палиндрома введите 2;");
+		System.out.println("Dly poiska chisel vvedite v diapozone ot 1 do vashego chisla 1;");
+		System.out.println("Dly proverki slov na vozmojnosti ego palindroma vvedite 2;");
 
-		int num = enterTheNumber();
-
-		switch(num) {
+		switch(enterTheNumber()) {
 			case 1: {
 				simpy.startSearchSimple();
 				break;
@@ -20,15 +18,13 @@ public class Main {
 				break;
 			} 
 			default : {
-				System.out.println("Ошибка ввода");
+				System.out.println("Oshibka");
 			}
 		}
 	}
 
-	public int enterTheNumber() throws Exception {
-        System.out.println("Введите число:");
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            return Integer.valueOf(reader.readLine());
-        }
+	public static int enterTheNumber() {
+        Scanner scanner = new Scanner(System.in);
+		return scanner.nextInt();
     }
 }
