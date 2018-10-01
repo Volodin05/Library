@@ -39,11 +39,17 @@ public class Point3d {
     }
 
     public boolean equals(Point3d point3d) {
-        if (this.xCoord == point3d.xCoord && this.yCoord == point3d.yCoord && this.zCoord == point3d.zCoord) {
-            return true;
-        } else {
-            return false;
-        }
+        if (this.xCoord == point3d.xCoord) {
+            if (this.yCoord == point3d.yCoord) {
+                if (this.zCoord == point3d.zCoord) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } return false;
     }
 
     public double distanceTo(Point3d point) {
