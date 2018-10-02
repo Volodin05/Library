@@ -1,17 +1,21 @@
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 public class Lab1 {
     public static void main(String[] argv) {
 
         String points = readFile();
         String areas = "";
-        String[] threePoints = points.split(")");
+        String[] threePoints = points.split("!");
         for (String point : threePoints) {
-            String[] coordinates = point.split("(");
+            String[] coordinates = point.split(",");
             if (coordinates.length == 9) {
-                Point3D firstPoint = new Point3D(Double.valueOf(threePoints[0]), Double.valueOf(threePoints[1]), Double.valueOf(threePoints[2]));
-                Point3D secondPoint = new Point3D(Double.valueOf(threePoints[3]), Double.valueOf(threePoints[4]), Double.valueOf(threePoints[5]));
-                Point3D thridPoint = new Point3D(Double.valueOf(threePoints[6]), Double.valueOf(threePoints[7]), Double.valueOf(threePoints[8]));
+                Point3d firstPoint = new Point3d(Double.valueOf(coordinates[0]), Double.valueOf(coordinates[1]), Double.valueOf(coordinates[2]));
+                Point3d secondPoint = new Point3d(Double.valueOf(coordinates[3]), Double.valueOf(coordinates[4]), Double.valueOf(coordinates[5]));
+                Point3d thridPoint = new Point3d(Double.valueOf(coordinates[6]), Double.valueOf(coordinates[7]), Double.valueOf(coordinates[8]));
                 if (firstPoint.equals(secondPoint)) {
                     Error();
                 } else if (secondPoint.equals(thridPoint)) {
@@ -31,7 +35,7 @@ public class Lab1 {
     private static String readFile() {
         String everything = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/Users/mac/IdeaProjects/Point3D/src/file.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("/C:/Users/vitvo/file.txt"));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {
@@ -57,10 +61,10 @@ public class Lab1 {
     }
 
     private static void Error() {
-        System.out.println("Не должно быть равных точек");
+        System.out.println("No ravni tochki");
     }
 
-    private static double computeArea(Point3D firstPoint, Point3D secondPoint, Point3D thridPoint) {
+    private static double computeArea(Point3d firstPoint, Point3d secondPoint, Point3d thridPoint) {
         return Math.sqrt(
                 (firstPoint.distanceTo(secondPoint) + secondPoint.distanceTo(thridPoint) + thridPoint.distanceTo(firstPoint)) *
                         (-firstPoint.distanceTo(secondPoint) + secondPoint.distanceTo(thridPoint) + thridPoint.distanceTo(firstPoint)) *
